@@ -1,0 +1,11 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v" into library work
+ERROR: [VRFC 10-4982] syntax error near '"../01_rtl/config.vh' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:8]
+ERROR: [VRFC 10-3805] use of undefined macro 'CFG_IMG_VEC_NUM' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:12]
+ERROR: [VRFC 10-3805] use of undefined macro 'CFG_LIB_VEC_NUM' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:13]
+ERROR: [VRFC 10-3805] use of undefined macro 'CFG_VEC_WIDTH' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:14]
+ERROR: [VRFC 10-3805] use of undefined macro 'CFG_ZONE_NUM' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:15]
+ERROR: [VRFC 10-41] module instantiations in compilation scope are not allowed [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:2]
+ERROR: [VRFC 10-2934] 'dut' is already declared [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:34]
+ERROR: [VRFC 10-41] module instantiations in compilation scope are not allowed [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:29]
+ERROR: [VRFC 10-4982] syntax error near 'initial' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:45]
+ERROR: [VRFC 10-8549] SystemVerilog keyword 'initial' used in incorrect context [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_ZoneIDMulticast_new.v:45]

@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_ZoneIDMulticast_behav/xsimk.exe -simmode gui -wdb tb_ZoneIDMulticast_behav.wdb -simrunnum 0 -socket 2933
+Design successfully loaded
+Design Loading Memory Usage: 10792 KB (Peak: 10792 KB)
+Design Loading CPU Usage: 61 ms
+Simulation completed
+Simulation Memory Usage: 12284 KB (Peak: 12284 KB)
+Simulation CPU Usage: 109 ms

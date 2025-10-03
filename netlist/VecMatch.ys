@@ -1,0 +1,9 @@
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/AddrDeal.v
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/util/Latency.v
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/util/FIFOSync.v
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/Popcount.v
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/LookupTable.v
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/AdderTree.v
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/VecMatch.v
+design -reset-vlog; proc;
+write_json {workspace}/netlist/VecMatch.json

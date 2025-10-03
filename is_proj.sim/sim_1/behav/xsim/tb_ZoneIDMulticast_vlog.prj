@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../is_code/01_rtl" \
+"../../../../is_code/01_rtl/ZoneIDMulticast.v" \
+
+sv xil_defaultlib  --include "../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" --include "../../../../is_code/01_rtl" \
+"../../../../is_code/01_rtl/VirtualBROM.sv" \
+"../../../../is_code/02_sim/tb_ZoneIDMulticast.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
