@@ -1,0 +1,55 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Fri Nov 21 15:07:02 2025
+# Process ID         : 43892
+# Current directory  : C:/Users/Administrator/Documents/Vivado/is_proj/is_proj.runs/synth_1
+# Command line       : vivado.exe -log ZoneIDMulticast.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ZoneIDMulticast.tcl
+# Log file           : C:/Users/Administrator/Documents/Vivado/is_proj/is_proj.runs/synth_1/ZoneIDMulticast.vds
+# Journal file       : C:/Users/Administrator/Documents/Vivado/is_proj/is_proj.runs/synth_1\vivado.jou
+# Running On         : DESKTOP-OF-ISAIAH
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i7-13700H
+# CPU Frequency      : 2918 MHz
+# CPU Physical cores : 14
+# CPU Logical cores  : 20
+# Host memory        : 42660 MB
+# Swap memory        : 13421 MB
+# Total Virtual      : 56082 MB
+# Available Virtual  : 12012 MB
+#-----------------------------------------------------------
+source ZoneIDMulticast.tcl -notrace
+create_project: Time (s): cpu = 00:00:19 ; elapsed = 00:00:37 . Memory (MB): peak = 484.848 ; gain = 213.457
+Command: synth_design -top ZoneIDMulticast -part xc7z035ffg676-2 -sfcu
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z035'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z035'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 46148
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 992.898 ; gain = 504.172
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-10428] SystemVerilog compilation unit mode SFCU cannot be specified for verilog designs
+INFO: [Synth 8-6157] synthesizing module 'ZoneIDMulticast' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/ZoneIDMulticast.v:17]
+INFO: [Synth 8-6157] synthesizing module 'VirtualBROM' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/VirtualBROM.sv:33]
+	Parameter ROM_DEPTH bound to: 539 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDR_WIDTH bound to: 32'b00000000000000000000000000001010 
+	Parameter INIT_FILE bound to: dat/is_ZoneLib.dat - type: string 
+WARNING: [Synth 8-11581] system function call 'fopen' not supported [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/VirtualBROM.sv:55]
+ERROR: [Synth 8-6058] Synth Error: brom_sync: cannot open INIT_FILE='dat/is_ZoneLib.dat'  [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/VirtualBROM.sv:57]
+ERROR: [Synth 8-6156] failed synthesizing module 'VirtualBROM' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/VirtualBROM.sv:33]
+ERROR: [Synth 8-6156] failed synthesizing module 'ZoneIDMulticast' [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/ZoneIDMulticast.v:17]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1097.605 ; gain = 608.879
+---------------------------------------------------------------------------------
+synthesize failed
+INFO: [Common 17-83] Releasing license: Synthesis
+7 Infos, 2 Warnings, 0 Critical Warnings and 4 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 21 15:08:20 2025...

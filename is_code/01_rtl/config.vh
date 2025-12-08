@@ -12,14 +12,28 @@
 `define CFG_VEC_POPCOUNT_WIDTH ($clog2(1200 + 1))          // 11
 
 // data file paths
-`define CFG_IMG_VEC_FILE "dat/is_PatImg.dat"
-`define CFG_LIB_VEC_FILE "dat/is_PatLib.dat"
-`define CFG_LIB_COEFF_FILE "dat/is_CoeffLib.dat"
-`define CFG_ZONE_LIB_FILE "dat/is_ZoneLib.dat"
-`define CFP_STAR_LIB_FILE "dat/is_StarLib.dat"
+`define CFG_IMG_VEC_FILE    "dat/is_PatImg.dat"
+`define CFG_LIB_VEC_FILE    "dat/is_PatLib.dat"
+`define CFG_LIB_COEFF_FILE  "dat/is_CoeffLib.dat"
+`define CFG_ZONE_LIB_FILE   "dat/is_ZoneLib.dat"
+`define CFP_STAR_LIB_FILE   "dat/is_StarLib.dat"
 
-`define CFG_MATCHMAT_FILE "dat/is_MatchMat.dat"
+`define CFG_MATCHMAT_FILE   "dat/is_MatchMat.dat"
 
+// `define CFG_IMG_VEC_FILE    "../dat/is_PatImg.dat"
+// `define CFG_LIB_VEC_FILE    "../dat/is_PatLib.dat"
+// `define CFG_LIB_COEFF_FILE  "../dat/is_CoeffLib.dat"
+// `define CFG_ZONE_LIB_FILE   "../dat/is_ZoneLib.dat"
+// `define CFP_STAR_LIB_FILE   "../dat/is_StarLib.dat"
+
+// `define CFG_MATCHMAT_FILE   "../dat/is_MatchMat.dat"
+
+// `define CFG_IMG_VEC_FILE    "is_PatImg.dat"
+// `define CFG_LIB_VEC_FILE    "is_PatLib.dat"
+// `define CFG_LIB_COEFF_FILE  "is_CoeffLib.dat"
+// `define CFG_ZONE_LIB_FILE   "is_ZoneLib.dat"
+// `define CFP_STAR_LIB_FILE   "is_StarLib.dat"
+// `define CFG_MATCHMAT_FILE   "is_MatchMat.dat"
 
 // LookupTable and AdderTree
 `define CFG_LUT_IN_WIDTH 6

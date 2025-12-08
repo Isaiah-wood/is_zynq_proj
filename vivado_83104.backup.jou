@@ -1,0 +1,130 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Wed Nov 19 11:19:04 2025
+# Process ID         : 83104
+# Current directory  : C:/Users/Administrator/Documents/Vivado/is_proj
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent83852 C:\Users\Administrator\Documents\Vivado\is_proj\is_proj.xpr
+# Log file           : C:/Users/Administrator/Documents/Vivado/is_proj/vivado.log
+# Journal file       : C:/Users/Administrator/Documents/Vivado/is_proj\vivado.jou
+# Running On         : DESKTOP-OF-ISAIAH
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i7-13700H
+# CPU Frequency      : 2918 MHz
+# CPU Physical cores : 14
+# CPU Logical cores  : 20
+# Host memory        : 42660 MB
+# Swap memory        : 9126 MB
+# Total Virtual      : 51787 MB
+# Available Virtual  : 3613 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Administrator/Documents/Vivado/is_proj/is_proj.xpr
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_VecMatch [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source tb_VecMatch.tcl
+synth_design -top VecMatch -part xc7z035ffg676-2 -lint 
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/VecErgodic.v] -no_script -reset -force -quiet
+remove_files  C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/VecErgodic.v
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_BROMDriver.sv] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_VecErgodic.sv] -no_script -reset -force -quiet
+remove_files  -fileset sim_1 {C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_BROMDriver.sv C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_VecErgodic.sv}
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top ZoneIDMulticast [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+add_files -norecurse {C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_PatImg.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_ZoneLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_StarLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_PatLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_CoeffLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_MatchMat.dat}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_StarLib.dat] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_ZoneLib.dat] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_PatLib.dat] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_PatImg.dat] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_MatchMat.dat] -no_script -reset -force -quiet
+export_ip_user_files -of_objects  [get_files C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_CoeffLib.dat] -no_script -reset -force -quiet
+remove_files  {C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_StarLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_ZoneLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_PatLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_PatImg.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_MatchMat.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_CoeffLib.dat}
+add_files -norecurse {C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_PatImg.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_ZoneLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_StarLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_PatLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_CoeffLib.dat C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/dat/is_MatchMat.dat}
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+set_property -name {STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS} -value -sfcu -objects [get_runs synth_1]
+reset_run synth_1
+launch_runs synth_1 -jobs 10
+wait_on_run synth_1
+close_sim

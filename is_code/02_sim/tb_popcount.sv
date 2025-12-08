@@ -143,10 +143,10 @@ module tb_popcount;
 		.clk       (clk),
 		.rst_n     (rst_n),
 		.in_valid  (in_valid),
-		.in_ready  (in_ready),
+		.this_ready  (in_ready),
 		.vec       (vec),
 		.out_valid (out_valid),
-		.out_ready (out_ready),
+		.next_ready (out_ready),
 		.popcount  (popcount)
 	);
 

@@ -39,6 +39,8 @@ module FIFOSync #(
     assign full  = ( (wr_ptr[$clog2(FIFO_DEPTH)-1:0] == rd_ptr[$clog2(FIFO_DEPTH)-1:0]) &&
                      (wr_ptr[$clog2(FIFO_DEPTH)]     != rd_ptr[$clog2(FIFO_DEPTH)]) );
     assign empty = (wr_ptr == rd_ptr);
+    
+    
 
     // -------------------------------
     // 写入逻辑
