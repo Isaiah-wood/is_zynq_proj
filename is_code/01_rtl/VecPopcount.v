@@ -60,43 +60,28 @@ module VecPopcount #(
             /* -------------------------------------------------------------------------- */
             /*                         使用Popcount模块 + AdderTree模块                         */
             /* -------------------------------------------------------------------------- */
-            // 切分输入向量为多个LUT宽度块
             localparam SLICE_NUM = (VEC_WIDTH + LUT_WIDTH - 1) / LUT_WIDTH; // 向上取整
             localparam LUT_IN_WIDTH = LUT_WIDTH;
             localparam LUT_OUT_WIDTH = $clog2(LUT_WIDTH + 1);
-            // 每块LUT的popcount结果
-            reg [LUT_OUT_WIDTH-1:0] cntslices[0:SLICE_NUM-1];
-            genvar si;
-            generate
-                for (si = 0; si < SLICE_NUM; si = si + 1) begin : SLICES
-                    wire [LUT_IN_WIDTH-1:0] vecslice;
-                    assign vecslice = (si+1)*LUT_WIDTH > VEC_WIDTH ?
-                                    {{(si+1)*LUT_WIDTH-VEC_WIDTH{1'b0}}, vec[VEC_WIDTH-1:si*LUT_WIDTH]} :
-                                    vec[si*LUT_WIDTH +: LUT_WIDTH];
-                    LUT6_Popcount #(
-                        .DIN_WIDTH (LUT_IN_WIDTH),
-                        .DOUT_WIDTH(LUT_OUT_WIDTH)
-                    ) u_lut6_popcount (
-                        .din (vecslice),
-                        .dout(cntslices[si])
-                    );
-                end
-            endgenerate
 
-            // 将切片结果输入加法树
             localparam integer LEVELS = $clog2(SLICE_NUM) + 1; // 流水级数（含末级）
             wire addends_ready[0:LEVELS];
             reg addends_valid[0:LEVELS-1];
-
             // ready信号反馈链
+            // addends_ready[i] = 当前i级可以接收新数据
+            // 当i级没有有效数据时，可以接收新数据
+            // 当i级有有效数据时，只有当i+1级已经取走数据后，才能接收新数据
             assign addends_ready[LEVELS] = next_ready;
             genvar ready_idx;
-            generate
-                for (ready_idx = 0; ready_idx < LEVELS; ready_idx = ready_idx + 1) begin : READY_CHAIN
-                    assign addends_ready[ready_idx] = (~addends_valid[ready_idx]) || addends_ready[ready_idx+1];
-                end
-            endgenerate
-            // valid信号传递链
+            for (ready_idx = 0; ready_idx < LEVELS; ready_idx = ready_idx + 1) begin : READY_CHAIN
+                // 可以接收新数据的条件：
+                // 1) 当前级没有有效数据（不占用），或
+                // 2) 当前级有数据，但下一级ready（可以继续流动）
+                assign addends_ready[ready_idx] = (~addends_valid[ready_idx]) || addends_ready[ready_idx+1];
+            end
+            // valid信号传递链 - 使用握手协议
+            // 当当前级 ready=1 时，接收前一级的 valid
+            // 当当前级 ready=0 时，保持当前的 valid 不变（背压）
             integer lv;
             always @(posedge clk) begin
                 if (!rst_n) begin
@@ -106,74 +91,72 @@ module VecPopcount #(
                 end else begin
                     for (lv = 0; lv < LEVELS; lv = lv + 1) begin
                         if (lv == 0) begin
+                            // 第0级：in_valid 握手
                             if (addends_ready[0]) begin
                                 addends_valid[0] <= in_valid;
                             end
                         end else begin
+                            // 第lv级：来自第lv-1级的握手
+                            // 只有当前级ready=1时，才接收前一级的有效信号
                             if (addends_ready[lv]) begin
                                 addends_valid[lv] <= addends_valid[lv-1];
                             end
+                            // 否则保持当前值（等待下游接收）
                         end
-                    end
-                end
-            end
-            // cntslices输入打包
-            reg [LUT_OUT_WIDTH-1:0] addend_reg[0:SLICE_NUM-1];
-            integer sn;
-            always @(posedge clk) begin
-                if (!rst_n) begin
-                    for (sn = 0; sn < SLICE_NUM; sn = sn + 1) begin
-                        addend_reg[sn] <= {LUT_OUT_WIDTH{1'b0}};
-                    end
-                end else if (addends_ready[0]) begin
-                    for (sn = 0; sn < SLICE_NUM; sn = sn + 1) begin
-                        addend_reg[sn] <= cntslices[sn];
                     end
                 end
             end
 
             // 加法树，基于AdderLevel
             genvar glv,gai;     // glv: level index, gai: adder index
-            generate
-                for(glv = 0; glv < LEVELS; glv = glv + 1) begin : ADDER_LEVELS
-                    localparam integer ADDER_NUM = (SLICE_NUM >> glv) / 2 + (SLICE_NUM >> glv) % 2; // 每级加法器数量
-                    localparam integer SUM_WIDTH = LUT_OUT_WIDTH + 1 + glv; // 每级加法器输入宽度逐级增加1
-                    reg [SUM_WIDTH-1:0] sum_reg[0:ADDER_NUM-1];
-                    if (glv == 0) begin
-                        for(gai = 0; gai < ADDER_NUM; gai = gai + 1) begin : ADDERS
-                            always @(posedge clk) begin
-                                if (!rst_n) begin
-                                    sum_reg[gai] <= {SUM_WIDTH{1'b0}};
-                                end else if (addends_ready[glv]) begin
-                                    if (gai == ADDER_NUM - 1 && (SLICE_NUM % 2 == 1)) begin
-                                        // 奇数个加数，最后一个直接传递
-                                        sum_reg[gai] <= addend_reg[(2*gai)];
-                                    end else begin
-                                        sum_reg[gai] <= addend_reg[(2*gai)] + addend_reg[(2*gai+1)];
-                                    end
-                                end
+            for(glv = 0; glv < LEVELS; glv = glv + 1) begin : ADDER_LEVELS
+                // 当前级的输入节点数（来自前一级的输出）
+                localparam integer INPUT_NUM = glv == 0 ? SLICE_NUM : ((SLICE_NUM + (1 << (glv - 1)) - 1) >> (glv - 1));
+                // 当前级的输出节点数
+                localparam integer OUTPUT_NUM = glv == 0 ? SLICE_NUM : ((SLICE_NUM + (1 << glv) - 1) >> glv);
+                localparam integer SUM_WIDTH = LUT_OUT_WIDTH + glv; // 每级加法器输入宽度逐级增加1
+                reg [SUM_WIDTH-1:0] sum_reg[0:OUTPUT_NUM-1];
+                if (glv == 0) begin
+                    for(gai = 0; gai < OUTPUT_NUM; gai = gai + 1) begin : SLICES
+                        wire [LUT_IN_WIDTH-1:0] vecslice;
+                        wire [LUT_OUT_WIDTH-1:0] cntslice;
+                        assign vecslice = (gai+1)*LUT_WIDTH > VEC_WIDTH ?
+                                        {{(gai+1)*LUT_WIDTH-VEC_WIDTH{1'b0}}, vec[VEC_WIDTH-1:gai*LUT_WIDTH]} :
+                                        vec[gai*LUT_WIDTH +: LUT_WIDTH];
+                        LUT6_Popcount #(
+                            .DIN_WIDTH (LUT_IN_WIDTH),
+                            .DOUT_WIDTH(LUT_OUT_WIDTH)
+                        ) u_lut6_popcount (
+                            .din (vecslice),
+                            .dout(cntslice)
+                        );
+                        always @(posedge clk) begin
+                            if(!rst_n) begin
+                                sum_reg[gai] <= {SUM_WIDTH{1'b0}};
+                            end else if (addends_ready[glv]) begin
+                                sum_reg[gai] <= cntslice;
                             end
                         end
-                    end else begin
-                        for(gai = 0; gai < ADDER_NUM; gai = gai + 1) begin : ADDERS
-                            always @(posedge clk) begin
-                                if (!rst_n) begin
-                                    sum_reg[gai] <= {SUM_WIDTH{1'b0}};
-                                end else if (addends_ready[glv]) begin
-                                    if (gai == ADDER_NUM - 1 && ((SLICE_NUM >> glv) % 2 == 1)) begin
-                                        // 奇数个加数，最后一个直接传递
-                                        sum_reg[gai] <= ADDER_LEVELS[glv-1].ADDERS[(2*gai)].sum_reg;
-                                    end else begin
-                                        sum_reg[gai] <= ADDER_LEVELS[glv-1].ADDERS[(2*gai)].sum_reg + ADDER_LEVELS[glv-1].ADDERS[(2*gai+1)].sum_reg;
-                                    end
+                    end
+                end else begin
+                    for(gai = 0; gai < OUTPUT_NUM; gai = gai + 1) begin : ADDERS
+                        always @(posedge clk) begin
+                            if (!rst_n) begin
+                                sum_reg[gai] <= {SUM_WIDTH{1'b0}};
+                            end else if (addends_ready[glv]) begin
+                                if (gai == OUTPUT_NUM - 1 && (INPUT_NUM % 2 == 1)) begin
+                                    // 奇数个加数，最后一个直接传递
+                                    sum_reg[gai] <= ADDER_LEVELS[glv-1].sum_reg[(2*gai)];
+                                end else begin
+                                    sum_reg[gai] <= ADDER_LEVELS[glv-1].sum_reg[(2*gai)] + ADDER_LEVELS[glv-1].sum_reg[(2*gai+1)];
                                 end
                             end
                         end
                     end
                 end
-            endgenerate
+            end
             // 输出接口连接
-            assign popcount = ADDER_LEVELS[LEVELS-1].ADDERS[0].sum_reg;
+            assign popcount = ADDER_LEVELS[LEVELS-1].sum_reg[0];
             assign out_valid = addends_valid[LEVELS-1];
             assign this_ready = addends_ready[0];
         end // end of WITH_ADDER_TREE

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_VecPopcount_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_VecPopcount" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="230.166 ns"></ZoomStartTime>
+      <ZoomEndTime time="475.967 ns"></ZoomEndTime>
+      <Cursor1Time time="269.566 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="189"></NameColumnWidth>
+      <ValueColumnWidth column_width="150"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="17" />
+   <wvobject fp_name="/tb_VecPopcount/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/rst_n" type="logic">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/in_valid" type="logic">
+      <obj_property name="ElementShortName">in_valid</obj_property>
+      <obj_property name="ObjectShortName">in_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/out_valid" type="logic">
+      <obj_property name="ElementShortName">out_valid</obj_property>
+      <obj_property name="ObjectShortName">out_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/this_ready" type="logic">
+      <obj_property name="ElementShortName">this_ready</obj_property>
+      <obj_property name="ObjectShortName">this_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/next_ready" type="logic">
+      <obj_property name="ElementShortName">next_ready</obj_property>
+      <obj_property name="ObjectShortName">next_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/vec" type="array">
+      <obj_property name="ElementShortName">vec[1099:0]</obj_property>
+      <obj_property name="ObjectShortName">vec[1099:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/dut/\WITH_ADDER_TREE.ADDER_LEVELS[1].sum_reg " type="array">
+      <obj_property name="ElementShortName">\WITH_ADDER_TREE.ADDER_LEVELS[1].sum_reg [0:91][3:0]</obj_property>
+      <obj_property name="ObjectShortName">\WITH_ADDER_TREE.ADDER_LEVELS[1].sum_reg [0:91][3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/dut/\WITH_ADDER_TREE.ADDER_LEVELS[2].sum_reg " type="array">
+      <obj_property name="ElementShortName">\WITH_ADDER_TREE.ADDER_LEVELS[2].sum_reg [0:45][4:0]</obj_property>
+      <obj_property name="ObjectShortName">\WITH_ADDER_TREE.ADDER_LEVELS[2].sum_reg [0:45][4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/dut/\WITH_ADDER_TREE.ADDER_LEVELS[3].sum_reg " type="array">
+      <obj_property name="ElementShortName">\WITH_ADDER_TREE.ADDER_LEVELS[3].sum_reg [0:22][5:0]</obj_property>
+      <obj_property name="ObjectShortName">\WITH_ADDER_TREE.ADDER_LEVELS[3].sum_reg [0:22][5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/dut/\WITH_ADDER_TREE.ADDER_LEVELS[4].sum_reg " type="array">
+      <obj_property name="ElementShortName">\WITH_ADDER_TREE.ADDER_LEVELS[4].sum_reg [0:11][6:0]</obj_property>
+      <obj_property name="ObjectShortName">\WITH_ADDER_TREE.ADDER_LEVELS[4].sum_reg [0:11][6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/dut/\WITH_ADDER_TREE.ADDER_LEVELS[5].sum_reg " type="array">
+      <obj_property name="ElementShortName">\WITH_ADDER_TREE.ADDER_LEVELS[5].sum_reg [0:5][7:0]</obj_property>
+      <obj_property name="ObjectShortName">\WITH_ADDER_TREE.ADDER_LEVELS[5].sum_reg [0:5][7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/dut/\WITH_ADDER_TREE.ADDER_LEVELS[6].sum_reg " type="array">
+      <obj_property name="ElementShortName">\WITH_ADDER_TREE.ADDER_LEVELS[6].sum_reg [0:2][8:0]</obj_property>
+      <obj_property name="ObjectShortName">\WITH_ADDER_TREE.ADDER_LEVELS[6].sum_reg [0:2][8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/dut/\WITH_ADDER_TREE.ADDER_LEVELS[7].sum_reg " type="array">
+      <obj_property name="ElementShortName">\WITH_ADDER_TREE.ADDER_LEVELS[7].sum_reg [0:1][9:0]</obj_property>
+      <obj_property name="ObjectShortName">\WITH_ADDER_TREE.ADDER_LEVELS[7].sum_reg [0:1][9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/dut/\WITH_ADDER_TREE.ADDER_LEVELS[8].sum_reg " type="array">
+      <obj_property name="ElementShortName">\WITH_ADDER_TREE.ADDER_LEVELS[8].sum_reg [0:0][10:0]</obj_property>
+      <obj_property name="ObjectShortName">\WITH_ADDER_TREE.ADDER_LEVELS[8].sum_reg [0:0][10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/popcount" type="array">
+      <obj_property name="ElementShortName">popcount[10:0]</obj_property>
+      <obj_property name="ObjectShortName">popcount[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_VecPopcount/expected_popcount" type="array">
+      <obj_property name="ElementShortName">expected_popcount[10:0]</obj_property>
+      <obj_property name="ObjectShortName">expected_popcount[10:0]</obj_property>
+   </wvobject>
+</wave_config>

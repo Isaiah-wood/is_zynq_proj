@@ -1,22 +1,42 @@
 Time resolution is 1 ps
-WARNING: File ddr_init_test.mem referenced on C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/axi_ddr3_sim.v at line 78 cannot be opened for reading. Please ensure that this file is available in the current working directory or parent directory of xsim.dir location specified via -xsimdir switch.
-Created init file: ddr_init_test.mem
-Reset released
-[              120000] Starting Test 1: Single Read
-[              155000] Test 1 Complete
-[              155000] DATA RECEIVED: ID=1, Last=1, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              205000] Starting Test 2: Burst Read (4 beats)
-[              235000] DATA RECEIVED: ID=2, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              245000] DATA RECEIVED: ID=2, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              255000] DATA RECEIVED: ID=2, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              265000] Test 2 Complete
-[              265000] DATA RECEIVED: ID=2, Last=1, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              315000] Starting Test 3: Random RREADY (Back-pressure)
-[              345000] DATA RECEIVED: ID=3, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              355000] DATA RECEIVED: ID=3, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              365000] DATA RECEIVED: ID=3, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              375000] DATA RECEIVED: ID=3, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              385000] DATA RECEIVED: ID=3, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              405000] DATA RECEIVED: ID=3, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              415000] DATA RECEIVED: ID=3, Last=0, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-[              435000] DATA RECEIVED: ID=3, Last=1, Data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[TEST 1] Reset Complete
+[TEST 2] Input: All zeros, Expected popcount:    0
+  [INPUT #0] Recorded: 0
+[TEST 3] Input: All ones, Expected popcount: 1100
+  [INPUT #1] Recorded: 1100
+[TEST 4] Input: Pattern 1 (every 7th bit), Expected popcount:  158
+  [INPUT #2] Recorded: 158
+[TEST 5] Input: Pattern 2 (alternating bits), Expected popcount:  550
+  [INPUT #3] Recorded: 550
+[TEST 6] Input: With backpressure (next_ready=0), Expected popcount:   32
+  [Applying backpressure, will keep input valid until released]
+  [INPUT #4] Recorded: 32
+  [INPUT #5] Recorded: 32
+  [INPUT #6] Recorded: 32
+  [INPUT #7] Recorded: 32
+[PASS] [0] Output:    0 (Expected:    0)
+[TEST 7] Continuous stream test
+[PASS] [1] Output: 1100 (Expected: 1100)
+  [Stream 0] Input popcount:   11
+  [INPUT #8] Recorded: 11
+[PASS] [2] Output:  158 (Expected:  158)
+  [Stream 1] Input popcount: 1080
+  [INPUT #9] Recorded: 1080
+  [Stream 2] Input popcount: 1079
+  [INPUT #10] Recorded: 1079
+[PASS] [3] Output:  550 (Expected:  550)
+Stopping input, waiting for all pipeline results (PIPELINE_DEPTH=9)...
+[PASS] [4] Output:   32 (Expected:   32)
+[PASS] [5] Output:   32 (Expected:   32)
+[PASS] [6] Output:   32 (Expected:   32)
+[PASS] [7] Output:   32 (Expected:   32)
+[PASS] [8] Output:   11 (Expected:   11)
+[PASS] [9] Output: 1080 (Expected: 1080)
+[PASS] [10] Output: 1079 (Expected: 1079)
+[TEST 8] No input - out_valid should be low: 0
+========================================
+Test completed!
+  Input handshakes:  11
+  Output handshakes: 11
+========================================
+$finish called at time : 455 ns : File "C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_VecPopcount.sv" Line 171

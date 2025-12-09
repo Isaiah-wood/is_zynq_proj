@@ -28,7 +28,7 @@ module LUT6_Popcount #(
 
 
     // 初始化 LUT（综合为常量表）
-    localparam integer DEPTH        = (1 << DIN_WIDTH);          // 2 ^ DIN_WIDTH
+    localparam integer DEPTH = (1 << DIN_WIDTH);          // 2 ^ DIN_WIDTH
     integer i;
     initial begin
         for (i = 0; i < DEPTH; i = i + 1) begin

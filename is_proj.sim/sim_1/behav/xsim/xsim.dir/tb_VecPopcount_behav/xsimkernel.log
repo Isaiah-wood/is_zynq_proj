@@ -1,0 +1,4 @@
+Running: xsim.dir/tb_VecPopcount_behav/xsimk.exe -simmode gui -wdb tb_VecPopcount_behav.wdb -simrunnum 0 -socket 8682
+Design successfully loaded
+Design Loading Memory Usage: 11524 KB (Peak: 11524 KB)
+Design Loading CPU Usage: 343 ms
