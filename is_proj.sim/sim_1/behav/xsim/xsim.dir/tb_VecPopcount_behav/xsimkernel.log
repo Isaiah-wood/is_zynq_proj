@@ -2,3 +2,6 @@ Running: xsim.dir/tb_VecPopcount_behav/xsimk.exe -simmode gui -wdb tb_VecPopcoun
 Design successfully loaded
 Design Loading Memory Usage: 11524 KB (Peak: 11524 KB)
 Design Loading CPU Usage: 343 ms
+Simulation completed
+Simulation Memory Usage: 13012 KB (Peak: 13012 KB)
+Simulation CPU Usage: 593 ms

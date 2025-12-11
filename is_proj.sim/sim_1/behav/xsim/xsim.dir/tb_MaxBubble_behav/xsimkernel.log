@@ -1,0 +1,4 @@
+Running: xsim.dir/tb_MaxBubble_behav/xsimk.exe -simmode gui -wdb tb_MaxBubble_behav.wdb -simrunnum 0 -socket 8830
+Design successfully loaded
+Design Loading Memory Usage: 10868 KB (Peak: 10868 KB)
+Design Loading CPU Usage: 171 ms

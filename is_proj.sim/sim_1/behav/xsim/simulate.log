@@ -1,42 +1,16 @@
 Time resolution is 1 ps
 [TEST 1] Reset Complete
-[TEST 2] Input: All zeros, Expected popcount:    0
-  [INPUT #0] Recorded: 0
-[TEST 3] Input: All ones, Expected popcount: 1100
-  [INPUT #1] Recorded: 1100
-[TEST 4] Input: Pattern 1 (every 7th bit), Expected popcount:  158
-  [INPUT #2] Recorded: 158
-[TEST 5] Input: Pattern 2 (alternating bits), Expected popcount:  550
-  [INPUT #3] Recorded: 550
-[TEST 6] Input: With backpressure (next_ready=0), Expected popcount:   32
-  [Applying backpressure, will keep input valid until released]
-  [INPUT #4] Recorded: 32
-  [INPUT #5] Recorded: 32
-  [INPUT #6] Recorded: 32
-  [INPUT #7] Recorded: 32
-[PASS] [0] Output:    0 (Expected:    0)
-[TEST 7] Continuous stream test
-[PASS] [1] Output: 1100 (Expected: 1100)
-  [Stream 0] Input popcount:   11
-  [INPUT #8] Recorded: 11
-[PASS] [2] Output:  158 (Expected:  158)
-  [Stream 1] Input popcount: 1080
-  [INPUT #9] Recorded: 1080
-  [Stream 2] Input popcount: 1079
-  [INPUT #10] Recorded: 1079
-[PASS] [3] Output:  550 (Expected:  550)
-Stopping input, waiting for all pipeline results (PIPELINE_DEPTH=9)...
-[PASS] [4] Output:   32 (Expected:   32)
-[PASS] [5] Output:   32 (Expected:   32)
-[PASS] [6] Output:   32 (Expected:   32)
-[PASS] [7] Output:   32 (Expected:   32)
-[PASS] [8] Output:   11 (Expected:   11)
-[PASS] [9] Output: 1080 (Expected: 1080)
-[PASS] [10] Output: 1079 (Expected: 1079)
-[TEST 8] No input - out_valid should be low: 0
-========================================
-Test completed!
-  Input handshakes:  11
-  Output handshakes: 11
-========================================
-$finish called at time : 455 ns : File "C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_VecPopcount.sv" Line 171
+[TEST 2] Single beat frame
+[FRAME] len=1 exp_max=528 exp_idx=0
+[PASS] max=528 idx=0
+[TEST 3] Short frame (3 beats)
+[FRAME] len=3 exp_max=1497 exp_idx=1
+[PASS] max=1497 idx=1
+[TEST 4] Medium frame (10 beats)
+[FRAME] len=10 exp_max=2014 exp_idx=2
+[PASS] max=2014 idx=2
+[TEST 5] Random frames
+[FRAME] len=20 exp_max=1954 exp_idx=17
+[PASS] max=1954 idx=17
+[FRAME] len=4 exp_max=1406 exp_idx=0
+[PASS] max=1406 idx=0

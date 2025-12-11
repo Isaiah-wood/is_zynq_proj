@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Administrator/Documents/Vivado/is_proj/is_code/01_rtl/MaxBubble.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MaxBubble
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_MaxBubble.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_MaxBubble
+WARNING: [VRFC 10-3824] variable 'exp_max' must explicitly be declared as automatic or static [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_MaxBubble.sv:116]
+WARNING: [VRFC 10-3824] variable 'exp_idx' must explicitly be declared as automatic or static [C:/Users/Administrator/Documents/Vivado/is_proj/is_code/02_sim/tb_MaxBubble.sv:117]
