@@ -1,0 +1,4 @@
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/LUT6_Popcount.v
+read_verilog -sv -formal -overwrite {workspace}/is_code/01_rtl/VecPopcount.v
+design -reset-vlog; proc;
+write_json {workspace}/netlist/VecPopcount.json

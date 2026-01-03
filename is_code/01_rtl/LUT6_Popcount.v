@@ -20,21 +20,22 @@ module LUT6_Popcount #(
         end
     end
 
-    // 优先综合为分布式 ROM（LUT）
-    (* rom_style = "distributed", ram_style = "distributed" *) reg [DOUT_WIDTH-1:0] lut_table [0:DEPTH-1];
-    // 组合输出（读取 LUT）
-    assign dout = lut_table[din];
-
-
 
     // 初始化 LUT（综合为常量表）
     localparam integer DEPTH = (1 << DIN_WIDTH);          // 2 ^ DIN_WIDTH
+    (* rom_style = "distributed", ram_style = "distributed" *) reg [DOUT_WIDTH-1:0] lut_table [0:DEPTH-1];
     integer i;
     initial begin
         for (i = 0; i < DEPTH; i = i + 1) begin
             lut_table[i] = lookup(i[DIN_WIDTH-1:0]);
         end
     end
+
+
+    // 组合输出（读取 LUT）
+    assign dout = lut_table[din];
+
+
     function [DOUT_WIDTH-1:0] lookup;
         input [DIN_WIDTH-1:0] v;
         integer j;

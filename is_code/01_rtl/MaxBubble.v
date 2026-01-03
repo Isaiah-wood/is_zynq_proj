@@ -42,7 +42,7 @@ module MaxBubble #(
             cur_index <= {INDEX_WIDTH{1'b0}};
         end else if (this_ready && in_valid) begin
             if (in_last) begin
-                cur_index <= 32'd0;
+                cur_index <= {INDEX_WIDTH{1'b0}};     // 索引从1开始计数，0表示没有有效数据
             end else begin
                 cur_index <= cur_index + 1;
             end
@@ -82,7 +82,7 @@ module MaxBubble #(
     always @(posedge clk) begin
         if (!rst_n) begin
             max_data_buffer <= {DATA_WIDTH{1'b0}};
-            max_index_buffer <= 32'd0;
+            max_index_buffer <= {INDEX_WIDTH{1'b0}};
         end else begin
             if (in_valid && this_ready) begin
                 // 比较并更新最大值
@@ -102,7 +102,7 @@ module MaxBubble #(
 
     // 输出连接
     assign max_data =  out_valid_reg ? max_data_buffer : {DATA_WIDTH{1'b0}};
-    assign max_index = out_valid_reg ? max_index_buffer : 32'd0;
+    assign max_index = out_valid_reg ? max_index_buffer : {INDEX_WIDTH{1'b0}};
     // assign max_data = max_data_reg;
     // assign max_index = max_index_reg;
     assign out_valid = out_valid_reg;
